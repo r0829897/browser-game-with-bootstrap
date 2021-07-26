@@ -1,0 +1,24 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
+#homepage {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/bg-homepage.jpg') center;
+}
+
+#registerpage {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/bg-registerpage.jpg') center;
+  background-size: cover;
+}
+
+#register {
+  min-height: 93vh;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
