@@ -8,17 +8,65 @@
 // Then add additional custom code here
 #homepage {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/bg-homepage.jpg') center;
-}
-
-#registerpage {
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/bg-registerpage.jpg') center;
   background-size: cover;
 }
 
-#register {
+#registerpage {
+  background: url('../img/bg-registerpage.jpg') center;
+  background-size: cover;
+}
+
+#gamepage {
+  background: url('../img/bg-gamepage.jpg') center;
+  background-size: cover;
+}
+
+#register,
+#game {
   min-height: 93vh;
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+// Gamepage
+
+#gamepage {
+  height: 100%;
+  overflow: hidden;
+}
+
+#game div[class~="col"] {
+  height: 60px;
+}
+
+@include media-breakpoint-up(sm) {
+  #game div[class~="col"] {
+    height: 70px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  #game div[class~="col"] {
+    height: 40px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  #game div[class~="col"] {
+    height: 44px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  #game div[class~="col"] {
+    height: 46px;
+  }
+}
+
+@include media-breakpoint-up(xxl) {
+  #game div[class~="col"] {
+    height: 46px;
+  }
 }
