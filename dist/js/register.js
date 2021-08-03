@@ -34,9 +34,9 @@ window.onload = () => {
         last_name: last_name.value,
         email: email.value,
         password: password.value,
+        scores: []
       }
-      window.localStorage.setItem(user.username, JSON.stringify(user));
-      window.location.href = "index.html";
+      window.localStorage.setItem(user.username, JSON.stringify(user)); 
     }
   });
 }
