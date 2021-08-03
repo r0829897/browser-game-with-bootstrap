@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="css/custom.min.css">
   <title>Register</title>
 </head>
-<body id="registerpage">
+<body id="registerpage" class="bg-light">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid mx-2">
       <a class="navbar-brand fs-4" href="game.html"><i class="bi bi-controller"></i> Game</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse justify-content-end" id="navmenu">
+        <ul class="navbar-nav mb-2 mb-lg-0 text-end">
           <li class="nav-item">
             <a class="nav-link active"href="index.html">Home</a>
           </li>
@@ -36,50 +36,61 @@
   </nav>
 
   <!-- form -->
-  <section id="register" class="mt-5">
-    <div class="container-md overlay">
-      <div class="row justify-content-center pt-5">
+  <section id="register">
+    <div class="container-md p-3 border border-5 border rounded mt-5">
+      <div class="row">
+        <div class="col-4 d-none d-lg-flex flex-column pt-5 border-end p-3">
+          <h1 class="mb-2 text-primary">Get started with your acount</h1>
+          <small>Already have an accoun? <a href="index.html" class="btn-sm btn-outline-secondary text-decoration-none">Log in</a></small>
+          <span id="register-logo" class="display-1"><i class="bi bi-joystick"></i></span>
+        </div>
         <div class="col-lg-8">
-          <form class="text-white p-3">
-            <h1 class="mb-2">Get started with your acount</h1>
-            <small>Already have an accoun? <a href="index.html" class="btn-sm btn-secondary text-decoration-none">Log in</a></small>
+          <form class="p-3">
+            <!-- Mobile -->
+            <div class="d-flex d-lg-none flex-column mb-3">
+              <h1 class="mb-2 text-primary">Get started with your acount</h1>
+              <small>Already have an accoun? <a href="index.html" class="btn-sm btn-outline-secondary text-decoration-none">Log in</a></small>
+              <hr class="text-secondary">
+            </div>
 
-            <div class="row justify-content-between mt-4">
+            <div class="row justify-content-between">
               <div class="col-lg mb-3">
                 <label for="first-name" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="first-name" placeholder="First Name">
+                <input type="text" class="form-control" id="first-name" name="first-name" placeholder="First Name" required>
               </div>
 
               <div class="col-lg mb-3">
                 <label for="last-name" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+                <input type="text" class="form-control" id="last-name" name="last-name" placeholder="Last Name" required>
               </div>
             </div>
 
             <label for="username" class="form-label">Username</label>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" id="username" placeholder="e.g. Marc123">
+            <div class="input-group">
+              <input type="text" class="form-control" id="username" name="username" placeholder="e.g. Marc123" required>
               <span class="input-group-text">
                 <span class="tt" data-bs-placemenet="top" title="This is the name that will show on the scoreboard.">
                   <i class="bi bi-info-circle"></i>
                 </span>
               </span>
             </div>
+            <small id="username-match" class="text-danger d-block"></small>
             
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label mt-3">Email</label>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-              <input type="email" class="form-control" id="email" placeholder="e.g. 123@example.com">
+              <input type="email" class="form-control" id="email" name="email" placeholder="e.g. 123@example.com" required>
             </div>
             
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control mb-3" id="password" placeholder="At least 8 characters">
+            <input type="password" class="form-control mb-3" id="password" name="password" placeholder="At least 8 characters" required>
 
             <label for="confirm-password" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control mb-3" id="confirm-password" placeholder="Confirm Password">
+            <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password" required>
+            <small id="confirm-password-match" class="text-danger"></small>
             
             <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-outline-primary text-white mt-3">Sign Up</button>
+              <button id="submit-btn" class="btn btn-primary mt-4" type="submit">Sign Up</button>
             </div>
           </form>
         </div>
@@ -88,7 +99,7 @@
   </section>
 
 <!-- Footer -->
-  <footer class="p-3 text-white text-center position-relative">
+  <footer class="p-3 text-center position-relative">
     <div class="container align-items-center">
       <p class="lead mb-0">Copywrite &copy; 2021 Game</p>
     </div>
@@ -100,5 +111,6 @@
       new bootstrap.Tooltip(t);
     })
   </script>
+  <script src="js/register.js"></script>
 </body>
 </html>

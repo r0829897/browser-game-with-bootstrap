@@ -1,17 +1,29 @@
+// LINKS
+const nav_link = document.querySelectorAll('.nav-link');
+
 // CONSTANTS
 const TARGET_BACKGROUND = "bg-danger";
 const TARGET_TEXT = "<p class=\"text-white\"></p>";
-
-
 
 const positions = document.querySelectorAll('.col');
 let interval = undefined;
 let score = 0;
 const scoreHTML = document.getElementById("score");
-
+const cols = document.querySelectorAll('.col');
 
 
 window.onload = () => {
+  // LINKS
+  if (window.localStorage.getItem('user') !== null) {
+    nav_link[nav_link.length - 1].innerHTML = "<i class=\"bi bi-person-fill\"></i> Profile";
+    nav_link[nav_link.length - 1].setAttribute('href', 'profile.html');
+  }
+  else {
+    nav_link[nav_link.length - 1].innerHTML = "Register";
+    nav_link[nav_link.length - 1].setAttribute('href', 'register.html');
+  }
+
+  // COLS
 
 }
 

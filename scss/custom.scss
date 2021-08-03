@@ -11,9 +11,9 @@
   background-size: cover;
 }
 
-#registerpage {
-  background: url('../img/bg-registerpage.jpg') center;
-  background-size: cover;
+#register-logo {
+  font-size: 180px;
+  margin: 20px 50px;
 }
 
 #gamepage {
@@ -21,9 +21,15 @@
   background-size: cover;
 }
 
-#register,
-#game {
+#game,
+#profile {
   min-height: 93vh;
+}
+
+#register,
+#profile-error {
+  min-height: 84vh;
+  margin-top: 80px;
 }
 
 .overlay {

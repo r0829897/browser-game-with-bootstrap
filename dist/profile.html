@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/custom.min.css">
+  <title>Profile</title>
+</head>
+<body id="profilepage">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top overlay">
+    <div class="container-fluid mx-2">
+      <a class="navbar-brand fs-4" href="game.html"><i class="bi bi-controller"></i> Game</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navmenu">
+        <ul class="navbar-nav mb-2 mb-lg-0 text-end">
+          <li class="nav-item">
+            <a class="nav-link active"href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"href="highscores.html">Highscores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html"><i class="bi bi-person-fill"></i> Profile</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile -->
+  <section id="profile">
+    <div class="container-lg bg-light p-5">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-5 d-flex flex-column text-center text-lg-start">
+          <img class="border rounded-circle" src="img/profile.png" alt="Profile Picture" width="200px">
+          <p id="username" class="display-6"></p>
+        </div>
+        <div class="col-lg-5 d-flex flex-column text-center text-lg-start">
+          <div class="p-3 border rounded mb-3">First Name: <span id="first-name"></span></div>
+          <div class="p-3 border rounded mb-3">Last Name: <span id="last-name"></span></div>
+          <div class="p-3 border rounded mb-3">Email: <span id="email"></span></div>
+        </div>
+      </div>
+      <div class="row mt3">
+        <div class="col">
+          <h1>Bio</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt veniam voluptates fugiat porro nihil dicta dolorem debitis omnis explicabo quasi eligendi ad accusantium, officiis velit libero, quaerat quae. Repellat.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h1>Recent Games</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">12-05-2021</td>
+                <td>125</td>
+              </tr>
+              <tr>
+                <td scope="row">11-05-2021</td>
+                <td>150</td>
+              </tr>
+              <tr>
+                <td scope="row">10-05-2021</td>
+                <td>65</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="p-3 text-center position-relative">
+    <div class="container align-items-center">
+      <p class="lead mb-0">Copywrite &copy; 2021 Game</p>
+    </div>
+  </footer>
+  <script src="js/profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
