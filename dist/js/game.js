@@ -38,7 +38,7 @@ function start(btn) {
   if (loggedIn()) {
     let user = JSON.parse(window.localStorage.getItem('user'));
 
-    user.scores.push({
+    user.games.push({
       score: undefined, 
       time: getTime()
     });
@@ -95,7 +95,7 @@ function saveScore() {
   if (loggedIn()) {
     let user = JSON.parse(window.localStorage.getItem('user'));
 
-    user.scores[user.scores.length-1].score = score;
+    user.games[user.games.length-1].score = score;
     saveUser(user);
   }
 }

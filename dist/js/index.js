@@ -34,3 +34,15 @@ window.onload = () => {
     }
   });
 }
+
+
+// function test() {
+//   for (let i = 0; i < localStorage.length; i++) {     
+//     let key = localStorage.key(i);
+//     let user = JSON.parse(localStorage.getItem(key));
+//     let data = user.scores;
+//     user.games = data;
+//     user.scores = undefined;
+//     localStorage.setItem(key, JSON.stringify(user));
+//   }
+// }

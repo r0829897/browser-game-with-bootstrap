@@ -34,7 +34,7 @@ window.onload = () => {
         last_name: last_name.value,
         email: email.value,
         password: password.value,
-        scores: []
+        games: []
       }
       window.localStorage.setItem(user.username, JSON.stringify(user)); 
     }
