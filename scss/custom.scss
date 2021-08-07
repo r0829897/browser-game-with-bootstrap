@@ -17,7 +17,7 @@
 }
 
 #gamepage {
-  background: url('../img/bg-gamepage.jpg') center;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/bg-gamepage.jpg') center;
   background-size: cover;
 }
 
@@ -43,36 +43,69 @@
   overflow: hidden;
 }
 
-#game div[class~="col"] {
+// Start Screen
+#start-screen {
+  height: 350px;
+
+  & > div {
+    transition: all 0.2s ease-out;
+    width: 90%;
+    height: 40px;
+    position: relative;
+
+    &:hover {
+      width: 98%;
+      height: 48px;
+      
+    }
+  }
+}
+
+
+#test {
+  & > div {
+    height: 40px;
+    width: 200px;
+    background: red;
+    transition: width 2s ease-out;
+
+    &:hover {
+      width: 300px;
+    }
+  }
+}
+//
+
+#gameboard div[class~="col"] {
   height: 60px;
 }
 
 @include media-breakpoint-up(sm) {
-  #game div[class~="col"] {
+  #gameboard div[class~="col"] {
     height: 70px;
   }
 }
 
 @include media-breakpoint-up(md) {
-  #game div[class~="col"] {
+  #gameboard div[class~="col"] {
     height: 40px;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  #game div[class~="col"] {
+  #gameboard div[class~="col"] {
     height: 44px;
   }
 }
 
 @include media-breakpoint-up(xl) {
-  #game div[class~="col"] {
+  #gameboard div[class~="col"] {
     height: 46px;
   }
 }
 
 @include media-breakpoint-up(xxl) {
-  #game div[class~="col"] {
+  #gameboard div[class~="col"] {
     height: 46px;
   }
 }

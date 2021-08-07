@@ -8,11 +8,20 @@ const username_error = document.getElementById('username-error');
 const password = document.getElementById('password');
 const password_error = document.getElementById('password-error');
 
+const loginContainer = document.getElementById('login-container');
+const heroContainer = document.getElementById('hero-container');
+const hero = document.getElementById('hero');
+
 window.onload = () => {
   // LINKS
-  if (window.localStorage.getItem('user') !== null) {
+  if (loggedIn()) {
     nav_link[nav_link.length - 1].innerHTML = "<i class=\"bi bi-person-fill\"></i> Profile";
     nav_link[nav_link.length - 1].setAttribute('href', 'profile.html');
+
+    // Disable login if already logged in and show play-button
+    loginContainer.classList.add('d-none');
+    heroContainer.classList.add('justify-content-center');
+    hero.classList.remove('col-lg-7');
   }
   else {
     nav_link[nav_link.length - 1].innerHTML = "Register";
@@ -33,6 +42,10 @@ window.onload = () => {
       window.localStorage.setItem('user', window.localStorage.getItem(username.value));
     }
   });
+}
+
+function loggedIn() {
+ return  window.localStorage.getItem('user') !== null;
 }
 
 

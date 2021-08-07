@@ -35,12 +35,38 @@
   <!-- Game -->
   <section id="game" class="d-flex">
     <div class="container d-flex align-items-center justify-content-center flex-column">
-      <div class="d-flex align-items-center mt-5 mb-3">
-        <button id="play-btn" class="btn-lg btn-primary" onclick="start(this)">Start</button>
-        <div class="d-inline-block text-white px-5 display-6 fw-bold"><p class="m-0">Score: <span id="score">0</span></p></div>
+      <!-- Start screen -->
+      <div id="start-screen" class="col-xl-6 col-lg-8 col-md-10 col-12 mt-5 mb-3 overlay border border-secondary border-2 rounded-3 p-5 d-flex flex-column align-items-center justify-content-between">
+        <div class="mb-3">
+          <button class="btn btn-info w-100 h-100" onclick="play()">
+            Play
+          </button>
+        </div>
+        <div class="mb-3">
+          <!-- Rule Modal -->
+          <button type="button" class="btn btn-outline-light w-100 h-100" data-bs-toggle="modal" data-bs-target="#rule-modal">
+            Rules
+          </button>
+        </div>
+        <div class="mb-3">
+          <!-- Settings Modal -->
+          <button type="button" class="btn btn-outline-light w-100 h-100" data-bs-toggle="modal" data-bs-target="#settings-modal">
+            Settings
+          </button>
+        </div>
+        <div>
+          <a href="index.html" class="btn btn-outline-light w-100 h-100">Quit</a>
+        </div>
       </div>
       
-      <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-12 border p-5">
+      <!-- Gameboard -->
+      <div id="gameboard" class=" d-none col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-12 mt-4 border">
+        <div class="fixed-top text-white fw-bold p-3" onclick="leave()" style="cursor: pointer"><i class="bi bi-arrow-bar-left"></i> Go back</div>
+        <div class="d-flex justify-content-around p-3">
+          <button id="play-again-btn" class="btn btn-outline-info d-none" onclick="restartGame()">Play Again</button>
+          <div class="inline-block text-white text-center display-6 fw-bold"><p class="m-0">Score: <span id="score">0</span></p></div>
+        </div>
+
         <div class="row g-0">
           <div class="col border"></div>
           <div class="col border"></div>
@@ -212,6 +238,55 @@
       </div>
     </div>
   </section>
+
+  <!-- Rules Modal -->
+  <div class="modal fade" id="rule-modal" tabindex="-1" aria-labelledby="ruleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content border-0">
+        <div class="modal-header bg-secondary text-white border-0">
+          <h5 class="modal-title" id="ruleModalLabel">Rules</h5>
+          <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-dark text-white">
+          <ol>
+            <li>Rule 1: Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit veniam enim voluptatem nisi dolor quod at quisquam cum harum, amet tempora asperiores eius deserunt tenetur est minima, impedit voluptatum autem?</li>
+            <li>Rule 2: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste magni labore, libero placeat dolores eos maxime itaque qui numquam. Perferendis odio quaerat nesciunt repudiandae asperiores aperiam sint, maxime et veritatis.</li>
+            <li>Rule 3: Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias ducimus iure sed maiores cupiditate pariatur laborum, doloremque quasi, hic laboriosam, sit consectetur est. Mollitia, incidunt error. Deleniti laboriosam aperiam, alias, quo atque accusantium ipsam amet eius incidunt minima ea magnam.</li>
+            <li>Rule 4: Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste veniam dolor possimus, eius minus in quis porro vero repellat labore? Voluptate nostrum, ut rerum quisquam magnam officiis hic labore cum rem iusto repellat. Dolorem, commodi.</li>
+            <li>Rule 5: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minus corporis nobis quasi dolore ab? Facilis perferendis maiores molestiae accusantium.</li>
+          </ol>
+        </div>
+        <div class="modal-footer bg-dark text-white border-0">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal" id="settings-modal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+      <div class="modal-content border-0">
+        <div class="modal-header bg-secondary text-white border-0">
+          <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-dark text-white">
+          <ul>
+            <li>Setting 1</li>
+            <li>Setting 2</li>
+            <li>Setting 3</li>
+            <li>Setting 4</li>
+            <li>Setting 5</li>
+          </ul>
+        </div>
+        <div class="modal-footer bg-dark text-white border-0">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-info">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <!-- Footer -->
   <footer class="p-3 text-white text-center position-relative">

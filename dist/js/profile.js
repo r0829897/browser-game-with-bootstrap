@@ -38,16 +38,24 @@ function loadScores() {
     </tr>`;
   }
 
-  games.sort(function (a, b) {
-    return b.score - a.score;
-  });
+  if (games.length !== 0) {
+    games.sort(function (a, b) {
+      return b.score - a.score;
+    });
+  
+    let highscore = games[0];
+    const date = highscore.time.split("@")[0];
+    const time = highscore.time.split("@")[1];
+    highscore_table.innerHTML = `<tr>
+      <td scope="row">${date}</td>
+      <td>${time}</td>
+      <td class="fw-bold">${highscore.score}</td>
+    </tr>`; 
+  }
+}
 
-  let highscore = games[0];
-  const date = highscore.time.split("@")[0];
-  const time = highscore.time.split("@")[1];
-  highscore_table.innerHTML = `<tr>
-    <td scope="row">${date}</td>
-    <td>${time}</td>
-    <td class="fw-bold">${highscore.score}</td>
-  </tr>`; 
-} 
+function deleteAccount() {
+  localStorage.removeItem(JSON.parse(localStorage.getItem('user')).username);
+  localStorage.removeItem('user');
+  window.location.href = "index.html"
+}

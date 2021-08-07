@@ -2,14 +2,17 @@
 const nav_link = document.querySelectorAll('.nav-link');
 
 // CONSTANTS
-const TARGET_BACKGROUND = "bg-danger";
+const TARGET_BACKGROUND = "bg-success";
 const TARGET_TEXT = "<p class=\"text-white\"></p>";
 const positions = document.querySelectorAll('.col');
 const scoreHTML = document.getElementById("score");
-const play_btn = document.getElementById('play-btn');
+const gameboard = document.getElementById('gameboard');
+const startScreen = document.getElementById('start-screen');
+const navBar = document.querySelector('nav');
+const playAgainBtn = document.getElementById('play-again-btn');
 
 let interval = undefined;
-let score = 0;
+let score = undefined;
 
 window.onload = () => {
   // LINKS
@@ -26,34 +29,80 @@ window.onload = () => {
   positions.forEach(position => position.setAttribute('onclick', 'clickTarget(this)'));
 }
 
-function start(btn) {
+function play() {
+  gameboard.classList.remove('d-none');
+  startScreen.classList.add('d-none');
+  navBar.classList.add('d-none');
+  start();
+}
+
+function start() {
   score = 0;
   refreshScore(score);
-  btn.setAttribute("onclick", "stop(this)");
-  btn.classList.remove("btn-primary");
-  btn.classList.add("btn-danger");
-  btn.innerHTML = "Stop";
   interval = setInterval(chooseTargetPosition, 2000);
 
   if (loggedIn()) {
     let user = JSON.parse(window.localStorage.getItem('user'));
 
     user.games.push({
-      score: undefined, 
+      score: 0, 
       time: getTime()
     });
     saveUser(user);
   }
 }
 
-function stop(btn) {
-  btn.setAttribute("onclick", "start(this)");
-  btn.classList.remove("btn-danger");
-  btn.classList.add("btn-primary");
-  btn.innerHTML = "Start";
-  clearInterval(interval);
+function restartGame() {
+  positions.forEach(position => position.classList.remove('bg-danger'));
+  start();
+  playAgainBtn.classList.add('d-none');
+}
+
+function stop() {
+  playAgainBtn.classList.remove('d-none');
   saveScore();
 }
+
+function clickTarget(col) {
+  if (col.classList.contains('target')) {
+    score++;
+    refreshScore(score);
+    col.classList.remove('target');
+    col.classList.remove(TARGET_BACKGROUND);
+  }
+  else {
+    clearInterval(interval);
+    col.classList.add('bg-danger');
+    setTimeout(stop, 2000);
+  }
+}
+
+function leave() {
+  gameboard.classList.add('d-none');
+  startScreen.classList.remove('d-none');
+  
+  // if still playing
+  if (playAgainBtn.classList.contains('d-none')) {
+    saveScore();
+  }
+}
+
+// Save functions
+function saveScore() {
+  if (loggedIn()) {
+    let user = JSON.parse(window.localStorage.getItem('user'));
+
+    user.games[user.games.length-1].score = score;
+    saveUser(user);
+  }
+}
+
+function saveUser(user) {
+  window.localStorage.setItem(user.username, JSON.stringify(user));
+  window.localStorage.setItem('user', JSON.stringify(user));
+}
+
+// Help functions
 
 function refreshScore(score) {
   scoreHTML.innerHTML = score.toString();
@@ -69,18 +118,6 @@ function chooseTargetPosition() {
   setTimeout(removeTarget, 1800, i);
 }
 
-function clickTarget(col) {
-  if (col.classList.contains('target')) {
-    score++;
-    refreshScore(score);
-    col.classList.remove('target');
-    col.classList.remove(TARGET_BACKGROUND);
-  }
-  else {
-    stop(play_btn);
-  }
-}
-
 function showTarget(i) {
   positions[i].classList.add('target');
   positions[i].classList.add(TARGET_BACKGROUND);
@@ -89,15 +126,6 @@ function showTarget(i) {
 function removeTarget(i) {
   positions[i].classList.remove('target');
   positions[i].classList.remove(TARGET_BACKGROUND);
-}
-
-function saveScore() {
-  if (loggedIn()) {
-    let user = JSON.parse(window.localStorage.getItem('user'));
-
-    user.games[user.games.length-1].score = score;
-    saveUser(user);
-  }
 }
 
 function getTime() {
@@ -109,11 +137,6 @@ function getTime() {
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
   return datetime;
-}
-
-function saveUser(user) {
-  window.localStorage.setItem(user.username, JSON.stringify(user));
-  window.localStorage.setItem('user', JSON.stringify(user));
 }
 
 function loggedIn() {
