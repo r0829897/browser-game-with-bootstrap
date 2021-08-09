@@ -4,27 +4,28 @@ const nav_link = document.querySelectorAll('.nav-link');
 // CONSTANTS
 const TARGET_BACKGROUND = "bg-success";
 const TARGET_TEXT = "<p class=\"text-white\"></p>";
-const positions = document.querySelectorAll('.col');
 const scoreHTML = document.getElementById("score");
 const gameboard = document.getElementById('gameboard');
 const startScreen = document.getElementById('start-screen');
 const navBar = document.querySelector('nav');
 const playAgainBtn = document.getElementById('play-again-btn');
 
+let positions = document.querySelectorAll('.col');
 let interval = undefined;
 let score = undefined;
 
 window.onload = () => {
   // LINKS
-  if (window.localStorage.getItem('user') !== null) {
-    nav_link[nav_link.length - 1].innerHTML = "<i class=\"bi bi-person-fill\"></i> Profile";
-    nav_link[nav_link.length - 1].setAttribute('href', 'profile.html');
+  const navItems = document.querySelectorAll('.nav-item');
+  let lastNavItem = navItems[navItems.length - 1];
+  if (loggedIn()) {
+    loadNavbarProfile(lastNavItem);
   }
   else {
-    nav_link[nav_link.length - 1].innerHTML = "Register";
-    nav_link[nav_link.length - 1].setAttribute('href', 'register.html');
+    lastNavItem.innerHTML = "<a class=\"nav-link\" href=\"register.html\">Register</a>";
   }
 
+  
   // COLS
   positions.forEach(position => position.setAttribute('onclick', 'clickTarget(this)'));
 }
@@ -37,6 +38,11 @@ function play() {
 }
 
 function start() {
+  // change positions for resizing possibility
+  positions = Array.from(positions).filter(position =>
+    !(position.classList.contains('d-none') || position.parentNode.classList.contains('d-none'))
+  );
+
   score = 0;
   refreshScore(score);
   interval = setInterval(chooseTargetPosition, 2000);
@@ -83,6 +89,7 @@ function leave() {
   
   // if still playing
   if (playAgainBtn.classList.contains('d-none')) {
+    clearInterval(interval);
     saveScore();
   }
 }

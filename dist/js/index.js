@@ -1,6 +1,3 @@
-// LINKS
-const nav_link = document.querySelectorAll('.nav-link');
-
 // LOGIN
 const form = document.querySelector('form');
 const username = document.getElementById('username');
@@ -14,9 +11,10 @@ const hero = document.getElementById('hero');
 
 window.onload = () => {
   // LINKS
+  const navItems = document.querySelectorAll('.nav-item');
+  let lastNavItem = navItems[navItems.length - 1];
   if (loggedIn()) {
-    nav_link[nav_link.length - 1].innerHTML = "<i class=\"bi bi-person-fill\"></i> Profile";
-    nav_link[nav_link.length - 1].setAttribute('href', 'profile.html');
+    loadNavbarProfile(lastNavItem);
 
     // Disable login if already logged in and show play-button
     loginContainer.classList.add('d-none');
@@ -24,8 +22,7 @@ window.onload = () => {
     hero.classList.remove('col-lg-7');
   }
   else {
-    nav_link[nav_link.length - 1].innerHTML = "Register";
-    nav_link[nav_link.length - 1].setAttribute('href', 'register.html');
+    lastNavItem.innerHTML = "<a class=\"nav-link\" href=\"register.html\">Register</a>";
   }
 
   // LOGIN
@@ -44,9 +41,14 @@ window.onload = () => {
   });
 }
 
-function loggedIn() {
- return  window.localStorage.getItem('user') !== null;
-}
+// function loggedIn() {
+//  return  window.localStorage.getItem('user') !== null;
+// }
+
+// function logout() {
+//   window.localStorage.removeItem('user');
+//   window.location.href = "index.html";
+// }
 
 
 // function test() {

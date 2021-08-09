@@ -1,6 +1,16 @@
 const highscores = document.querySelector('tbody');
 
 window.onload = () => {
+  // LINKS
+  const navItems = document.querySelectorAll('.nav-item');
+  let lastNavItem = navItems[navItems.length - 1];
+  if (loggedIn()) {
+    loadNavbarProfile(lastNavItem);
+  }
+  else {
+    lastNavItem.innerHTML = "<a class=\"nav-link\" href=\"register.html\">Register</a>";
+  }
+
   let counter = 1;
   for (const player of sortPlayers(getPlayers())) {
     highscores.innerHTML += `<tr class="${counter == 1 ? "table-success" : 

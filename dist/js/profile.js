@@ -6,13 +6,12 @@ const recent_games_table = document.getElementById('recent-games');
 const highscore_table = document.getElementById('highscore');
 
 window.onload = () => {
-  if (window.localStorage.getItem('user') !== null) {
-    let user = JSON.parse(window.localStorage.getItem('user'));
-
-    username.innerHTML = user.username;
-    first_name.innerHTML = user.first_name;
-    last_name.innerHTML = user.last_name;
-    email.innerHTML = user.email;
+  // LINKS
+  const navItems = document.querySelectorAll('.nav-item');
+  let lastNavItem = navItems[navItems.length - 1];
+  if (loggedIn()) {
+    loadNavbarProfile(lastNavItem);
+    loadInfo();    
     loadScores();
   }
   else {
@@ -20,9 +19,13 @@ window.onload = () => {
   }
 }
 
-function logout() {
-  window.localStorage.removeItem('user');
-  window.location.href = "index.html";
+function loadInfo() {
+  let user = JSON.parse(localStorage.getItem('user'));
+
+  username.innerHTML = user.username;
+  first_name.innerHTML = user.first_name;
+  last_name.innerHTML = user.last_name;
+  email.innerHTML = user.email;
 }
 
 function loadScores() {
